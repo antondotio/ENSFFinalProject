@@ -7,10 +7,10 @@ public class MainClass extends JFrame{
     public MainClass(int width, int height){
         setTitle("Main Window");
         setSize(width, height);
-        setLayout(new BorderLayout());
 
         JPanel p = new JPanel();
         JPanel options = new JPanel();
+        p.setLayout(new BorderLayout());
         options.setLayout(new FlowLayout());
 
         p.add("South", options);
