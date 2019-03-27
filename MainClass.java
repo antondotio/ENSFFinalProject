@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class MainClass extends JFrame{
     JButton insert, find, browse, create;
@@ -25,6 +26,14 @@ public class MainClass extends JFrame{
         create = new JButton("Create Tree From File");
 
         options.add(insert);
+        insert.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e){
+                Insert ins = new Insert(700, 300);
+            }
+        }
+        );
+
         options.add(find);
         options.add(browse);
         options.add(create);
