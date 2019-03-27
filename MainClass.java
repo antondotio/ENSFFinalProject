@@ -1,30 +1,39 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class MainClass{
-    
-    public static void main(String[] args){
-        JFrame main = new JFrame("Main Window");
+public class MainClass extends JFrame{
+    JButton insert, find, browse, create;
+
+    public MainClass(int width, int height){
+        setTitle("Main Window");
+        setSize(width, height);
+        setLayout(new BorderLayout());
+
         JPanel p = new JPanel();
         JPanel options = new JPanel();
-        BorderLayout bl = new BorderLayout();
-
-        main.setSize(600, 400);
-        p.setLayout(bl);
         options.setLayout(new FlowLayout());
-        p.add("South", options);  
+
+        p.add("South", options);
         p.add("Center", new JEditorPane());
         JLabel title = new JLabel("An Application to Maintain Student Records");
         title.setHorizontalAlignment(JLabel.CENTER);
         p.add("North", title);
 
-        options.add(new Button("Insert"));
-        options.add(new Button("Find"));
-        options.add(new Button("Browse"));
-        options.add(new Button("Create Tree From File"));
+        insert =  new JButton("Insert");
+        find = new JButton("Find");
+        browse = new JButton("Browse");
+        create = new JButton("Create Tree From File");
 
-        main.setContentPane(p);
-        main.setVisible(true);
+        options.add(insert);
+        options.add(find);
+        options.add(browse);
+        options.add(create);
 
+        setContentPane(p);
+        setVisible(true);
+    }
+
+    public static void main(String[] args){
+        MainClass main = new MainClass(600, 400);
     }
 }
