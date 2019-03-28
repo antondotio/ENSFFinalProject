@@ -23,13 +23,16 @@ class BinSearchTree {
 	 * @param faculty - faculty code
 	 * @param major - student's major
 	 * @param year  - student's year of study
+	 * @return returns false if it was not added, true otherwise.
 	 */
-	public void insert(String id, String faculty, String major, String year) {
+	public boolean insert(String id, String faculty, String major, String year) {
 		
 		Node node = new Node(id, faculty, major, year);
 		
-		if(root == null)
+		if(root == null){
 			root = node;
+			return true;
+		}
 		else{
 			Node cur;
 			// find the location to insert a new node.
@@ -49,7 +52,9 @@ class BinSearchTree {
 				JOptionPane.showMessageDialog(null, "\nCannot insert: data already" +
 																			" exists: \n" + id, " Warning",JOptionPane.PLAIN_MESSAGE);
 				node = null;
-			}  
+				return false;
+			}
+			return true; 
 		}
 	}
 	

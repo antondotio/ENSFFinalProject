@@ -78,7 +78,8 @@ public class Insert extends JFrame{
     }
 
     public void insertInTree(String id, String faculty, String major, String year){
-        tree.insert(id, faculty, major, year);
-        JOptionPane.showMessageDialog(null, "Student added!", "New Student", JOptionPane.PLAIN_MESSAGE);
+        boolean inserted = tree.insert(id, faculty, major, year);
+        if(inserted)
+            JOptionPane.showMessageDialog(null, "Student added!", "New Student", JOptionPane.PLAIN_MESSAGE);
     }
 }
