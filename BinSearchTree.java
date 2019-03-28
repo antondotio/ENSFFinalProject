@@ -134,17 +134,16 @@ class BinSearchTree {
 	/**
 	 * Function that recursively display the data. 
 	 * @param cur - current node
-	 * @param out - the output stream to print the node information
-	 * @throws IOException
 	 */
-	public void print_tree(Node cur, PrintWriter out) throws IOException {
+	public String print_tree(Node cur){
+		String str = "";
 		if (cur.left!=null)
-			print_tree(cur.left,out);
+			str += print_tree(cur.left);
 		String s = cur.data.id+"        "+cur.data.faculty+"     "+
                                  cur.data.major+ "       "+cur.data.year + "\n";
-		out.println(s);
-		System.out.println(s);
+		str = str.concat(s);
 		if (cur.right!=null)
-			print_tree(cur.right,out);
+			str += print_tree(cur.right);
+		return str;
 	} 
 }
