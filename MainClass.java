@@ -32,7 +32,7 @@ public class MainClass extends JFrame{
 
         create.addActionListener(new ActionListener() 
         {
-            @override
+            @Override
             public void actionPerformed(ActionEvent e) {
                 InputFrame inFrame = new InputFrame(600, 200);
             }
