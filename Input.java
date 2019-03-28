@@ -2,14 +2,16 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class Input {
-    private BufferedReader inStream;
+    private Scanner inStream;
 
     public Input(String fileName)
     {
         try{
-            inStream = new BufferedReader(new FileReader(fileName));
+            FileReader reader = new FileReader(new File(fileName));
+            inStream = new Scanner(reader);
         } catch(FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "File does not exist.");
         }
@@ -22,17 +24,17 @@ public class Input {
         }
 
         BinSearchTree tree = new BinSearchTree();
-        String in;
-        try {
-            while((in = inStream.readLine()) != null)
+        while(inStream.hasNext())
+        {
+            String in = "";
+            for(int i = 0; i < 4; i++)
             {
-                String [] student = in.split(" ");
-                tree.insert(student[0], student[1], student[2], student[3]);
-            }
-            System.out.println("tree made");
-            return tree;
-        } catch (IOException e){
-            return null;
+                in += inStream.next() + " ";
+               }
+            String[] stud = in.split(" ");
+            tree.insert(stud[0], stud[1], stud[2], stud[3]);
         }
+        inStream.close();
+        return tree;
     }
 }

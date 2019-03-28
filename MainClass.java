@@ -14,15 +14,20 @@ public class MainClass extends JFrame{
 
         JPanel p = new JPanel();
         JPanel options = new JPanel();
-        JEditorPane textArea = new JEditorPane();
+        JPanel center = new JPanel();
+        JTextArea textArea = new JTextArea();
+        JScrollPane scroll = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        center.setLayout(new BorderLayout());
         p.setLayout(new BorderLayout());
         options.setLayout(new FlowLayout());
 
         p.add("South", options);
-        p.add("Center", textArea);
+        p.add("Center", center);
         JLabel title = new JLabel("An Application to Maintain Student Records");
         title.setHorizontalAlignment(JLabel.CENTER);
         p.add("North", title);
+
+        center.add("Center", scroll);
 
         insert =  new JButton("Insert");
         find = new JButton("Find");
@@ -32,8 +37,17 @@ public class MainClass extends JFrame{
         options.add(insert);
         options.add(find);
         options.add(browse);
+        browse.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+                String treeString = tree.print_tree(tree.root);
+                textArea.setText(treeString);
+            }
+        });
+
         options.add(create);
-    
         create.addActionListener(new ActionListener() 
         {
             @Override
@@ -41,18 +55,6 @@ public class MainClass extends JFrame{
                 String textFileName = JOptionPane.showInputDialog("Enter the file name:");
                 Input in = new Input(textFileName);
                 tree = in.createTree();
-            }
-        });
-
-        browse.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                StringWriter strWrite = new StringWriter();
-                PrintWriter writer = new PrintWriter(strWrite);
-                tree.print_tree(tree.root, writer);
-                textArea.setText(strWrite.toString());
             }
         });
 
