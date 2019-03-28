@@ -28,8 +28,9 @@ public class MainClass extends JFrame{
         options.add(insert);
         insert.addActionListener(new ActionListener()
         {
+            @Override
             public void actionPerformed(ActionEvent e){
-                Insert ins = new Insert(700, 300);
+                Insert ins = new Insert(500, 200);
             }
         }
         );
