@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class MainClass extends JFrame{
     JButton insert, find, browse, create;
@@ -28,6 +29,14 @@ public class MainClass extends JFrame{
         options.add(find);
         options.add(browse);
         options.add(create);
+
+        create.addActionListener(new ActionListener() 
+        {
+            @override
+            public void actionPerformed(ActionEvent e) {
+                InputFrame inFrame = new InputFrame(600, 200);
+            }
+        });
 
         setContentPane(p);
         setVisible(true);
