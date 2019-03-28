@@ -1,10 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class Insert extends JFrame{
     private JButton insert, returnMain;
+    private BinSearchTree tree;
 
-    public Insert(int width, int height){
+    public Insert(int width, int height, BinSearchTree tree){
+        this.tree = tree;
         setTitle("New Student");
         setSize(width, height);
         
@@ -48,8 +51,34 @@ public class Insert extends JFrame{
         inputs.add(enterYr);
         inputs.add(inputYr);
 
+        insert.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String id = inputID.getText();
+                String faculty = inputFac.getText();
+                String major = inputMaj.getText();
+                String year = inputYr.getText();
+                insertInTree(id, faculty, major, year);
+                dispose();
+            }
+        });
+
+        returnMain.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                dispose();
+            }
+        });
+            
+
         setContentPane(p);
         setVisible(true);
     }
 
+    public void insertInTree(String id, String faculty, String major, String year){
+        tree.insert(id, faculty, major, year);
+        JOptionPane.showMessageDialog(null, "Student added!", "New Student", JOptionPane.PLAIN_MESSAGE);
+    }
 }
