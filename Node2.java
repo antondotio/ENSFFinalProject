@@ -1,4 +1,3 @@
-
 /**
  * A node with data and two references to the next-left and next-right node
  */

@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 /**
  * This class opens a scannner and allows a user to create a Bibary search tree from inputs to the scanner
+ * @author Julian Pinto, Antonio Santos
+ * @version 1.0
+ * @since March 29, 2019
  */
 public class Input {
     /**

@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -5,6 +6,9 @@ import java.io.*;
 
 /**
  * this class creates the user interface for the user to use the program
+ * @author Julian Pinto, Antonio Santos
+ * @version 1.0
+ * @since March 29, 2019
  */
 public class MainClass extends JFrame{
     /**
@@ -96,6 +100,10 @@ public class MainClass extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+                if(tree.empty()){
+                    JOptionPane.showMessageDialog(null, "Tree is empty!", "Invalid", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 String treeString = tree.print_tree(tree.root);
                 textArea.setText(treeString);
             }
