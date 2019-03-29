@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
  * tree, and allows the user of the class to insert new nodes into the tree.  
  */
 
- 
+
 
 class BinSearchTree {
 	
