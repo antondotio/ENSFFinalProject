@@ -1,20 +1,12 @@
+import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 import java.io.*;
 import java.util.Scanner;
 
-/**
- * This class opens a scannner and allows a user to create a Bibary search tree from inputs to the scanner
- */
 public class Input {
-    /**
-    * Scanner to read from
-    */
     private Scanner inStream;
 
-    /**
-     * This class opens a scanner to the file given with said name
-     * @param fileName name of file to read from
-     */
     public Input(String fileName)
     {
         try{
@@ -25,10 +17,6 @@ public class Input {
         }
     }
 
-    /**
-     * creates a ninary search tree of type node from input files information
-     * @return binary tree created
-     */
     public BinSearchTree createTree()
     {
         if(inStream == null) {
