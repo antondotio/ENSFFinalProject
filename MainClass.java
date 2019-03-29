@@ -64,6 +64,7 @@ public class MainClass extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) 
             {
+                if(tree)
                 String treeString = tree.print_tree(tree.root);
                 textArea.setText(treeString);
             }
