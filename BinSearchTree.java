@@ -134,7 +134,6 @@ class BinSearchTree {
 	/**
 	 * Function that recursively display the data. 
 	 * @param cur - current node
-	 * @return String of student information
 	 */
 	public String print_tree(Node cur){
 		String str = "";
