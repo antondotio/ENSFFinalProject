@@ -77,6 +77,7 @@ public class MainClass extends JFrame{
                 String textFileName = JOptionPane.showInputDialog("Enter the file name:");
                 Input in = new Input(textFileName);
                 tree = in.createTree();
+                JOptionPane.showMessageDialog(null, "Binary Tree Created!", "Accepted", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
