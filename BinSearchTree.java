@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
  * tree, and allows the user of the class to insert new nodes into the tree.  
  */
 
- 
+
 
 class BinSearchTree {
 	
@@ -134,7 +134,6 @@ class BinSearchTree {
 	/**
 	 * Function that recursively display the data. 
 	 * @param cur - current node
-	 * @return String of student information
 	 */
 	public String print_tree(Node cur){
 		String str = "";
