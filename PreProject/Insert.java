@@ -2,6 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * This class open a new window and asks the user to input the information to inserts a new node into the binary search tree given
+ * @author Julian Pinto, Antonio Santos
+ * @version 1.0
+ * @since March 29, 2019
+ */
 public class Insert extends JFrame{
     private JButton insert, returnMain;
     private BinSearchTree tree;
