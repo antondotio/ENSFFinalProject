@@ -29,7 +29,7 @@ public class Server {
 		ArrayList<Item> items = new ArrayList<Item>();
 
 		try {
-			FileReader fr = new FileReader("C:\\Users\\Mohammad\\ENSF 409-Winter2019\\ToolShopProject\\src\\items.txt");
+			FileReader fr = new FileReader("items.txt");
 			BufferedReader br = new BufferedReader(fr);
 
 			String line = "";
