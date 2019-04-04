@@ -85,7 +85,8 @@ public class Server {
                 input = socketIn.readLine();
                 if(input.equals("GET/TOOLS")) {
                     String output = theShop.listAllItems();
-                    socketOut.println(output);
+					socketOut.println(output);
+					socketOut.println("DONE");
                 }
             } catch(IOException e) {
                 e.printStackTrace();

@@ -2,6 +2,7 @@ package Frontend.Controller;
 
 import java.io.*;
 import java.net.Socket;
+import java.lang.StringBuilder;
 
 public class Client{
     private Socket socket;
@@ -24,6 +25,13 @@ public class Client{
 
     public String displayTools() throws IOException{
         socketOut.println("GET/TOOLS");
-        return socketIn.readLine();
+        String response = socketIn.readLine();
+        StringBuilder list = new StringBuilder();
+        while(!response.equals("DONE")){
+            list.append(response);
+            list.append("\n");
+            response = socketIn.readLine();
+        }
+        return list.toString();
     }
 }
