@@ -1,3 +1,5 @@
+package src.Backend;
+
 import java.util.ArrayList;
 
 public class Supplier {
@@ -17,8 +19,7 @@ public class Supplier {
 		supContactName = contactName;
 		itemList = new ArrayList <Item>();
 	}
-
-
+	
 	public int getSupId() {
 		return supId;
 	}

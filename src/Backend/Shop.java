@@ -1,3 +1,5 @@
+package src.Backend;
+
 import java.util.ArrayList;
 
 public class Shop {
@@ -9,7 +11,6 @@ public class Shop {
 		
 		theInventory = inventory;
 		supplierList = suppliers;
-		
 	}
 	
 	public Inventory getTheInventory () {
@@ -26,8 +27,8 @@ public class Shop {
 	}
 	
 
-	public void listAllItems() {
-		System.out.println(theInventory);
+	public String listAllItems() {
+		return theInventory.toString();
 		
 	}
 	public String decreaseItem (String name) {

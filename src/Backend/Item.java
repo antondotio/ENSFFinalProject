@@ -1,3 +1,4 @@
+package src.Backend;
 
 public class Item {
 	
@@ -8,8 +9,7 @@ public class Item {
 	private boolean alreadyOrdered;
 	private Supplier theSupplier;
 	private static final int ORDERQUANTITY = 40;
-	private static final int MINIMUMUMBER = 20; 	
-	
+	private static final int MINIMUMUMBER = 20;
 	
 	public Item (int id, String name, int quanitiy, double price, Supplier sup) {
 		
@@ -90,5 +90,4 @@ public class Item {
 	public void setAlreadyOrdered(boolean alreadyOrdered) {
 		this.alreadyOrdered = alreadyOrdered;
 	}
-
 }
