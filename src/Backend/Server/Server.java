@@ -6,23 +6,23 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Server {
-    private BufferedReader socketIn;
-    private PrintWriter socketOut;
-    private ServerSocket serverSocket;
-    private Socket socket;
+	private BufferedReader socketIn;
+	private PrintWriter socketOut;
+	private ServerSocket serverSocket;
+	private Socket socket;
 
-    public Server(int serv) { 
-        try {
+	public Server(int serv) {
+		try {
 			serverSocket = new ServerSocket(serv);
 			System.out.println("Shop is running");
 			socket = serverSocket.accept();
 			socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			socketOut = new PrintWriter(socket.getOutputStream(), true);
-		
+
 		} catch (IOException e) {
 			System.err.println(e.getStackTrace());
 		}
-    }
+	}
 
 	private ArrayList<Item> readItems(ArrayList<Supplier> suppliers) {
 
@@ -76,31 +76,32 @@ public class Server {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-        return suppliers;
-	} 
-    private void communicate(Shop theShop) {
-        String input = "";
-        while(true) {
-            try {
-                input = socketIn.readLine();
-                if(input.equals("GET/TOOLS")) {
-                    String output = theShop.listAllItems();
+		return suppliers;
+	}
+
+	private void communicate(Shop theShop) {
+		String input = "";
+		while (true) {
+			try {
+				input = socketIn.readLine();
+				if (input.equals("GET/TOOLS")) {
+					String output = theShop.listAllItems();
 					socketOut.println(output);
 					socketOut.println("DONE");
-                }
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-    public static void main(String[] args) {
-        Server shopServer = new Server(9788);
-        ArrayList<Supplier> suppliers = new ArrayList<Supplier>();
+	public static void main(String[] args) {
+		Server shopServer = new Server(9788);
+		ArrayList<Supplier> suppliers = new ArrayList<>();
 		suppliers = shopServer.readSuppliers(suppliers);
 		Inventory theInventory = new Inventory(shopServer.readItems(suppliers));
-        Shop theShop = new Shop(theInventory, suppliers);
-        
-        shopServer.communicate(theShop);
-    }
+		Shop theShop = new Shop(theInventory, suppliers);
+
+		shopServer.communicate(theShop);
+	}
 }
