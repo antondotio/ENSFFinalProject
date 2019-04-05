@@ -84,7 +84,7 @@ public class Server {
 		while (true) {
 			try {
 				input = socketIn.readLine();
-				if (input.equals("GET/TOOLS")) {
+				if (input.equals("GET/TOOL/LIST")) {
 					String output = theShop.listAllItems();
 					socketOut.println(output);
 					socketOut.println("DONE");

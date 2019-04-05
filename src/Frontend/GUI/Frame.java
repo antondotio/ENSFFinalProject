@@ -107,8 +107,8 @@ public class Frame extends JFrame {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                String listOfTools = listener.actionPerformed("GET/TOOLS"); // Sends a string to the socket for the
-                                                                            // server to hear.
+                String listOfTools = listener.actionPerformed("GET/TOOL/LIST"); // Sends a string to the socket for the
+                // server to hear.
                 if (listOfTools.equals("") || listOfTools.equals("Error getting list of tools")) {
                     System.err.println("Error getting list of tools");
                 } else {
