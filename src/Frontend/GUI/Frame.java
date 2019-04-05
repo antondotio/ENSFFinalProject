@@ -21,7 +21,7 @@ public class Frame extends JFrame {
     /**
      * Button that will list all items on click
      */
-    private JButton listAll;
+    private JButton listAll, search, add, decrease;
     /**
      * The panels in the main frame
      */
@@ -121,6 +121,12 @@ public class Frame extends JFrame {
         });
 
         options.add(listAll);
+        search = new JButton("Search");
+        options.add(search);
+        add = new JButton("Add Item");
+        options.add(add);
+        decrease = new JButton("Decrease Item");
+        options.add(decrease);
     }
 
     /**
