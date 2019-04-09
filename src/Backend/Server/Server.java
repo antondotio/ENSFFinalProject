@@ -45,6 +45,7 @@ public class Server {
 					theSupplier.getItemList().add(myItem);
 				}
 			}
+			br.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -73,6 +74,7 @@ public class Server {
 				String[] temp = line.split(";");
 				suppliers.add(new Supplier(Integer.parseInt(temp[0]), temp[1], temp[2], temp[3]));
 			}
+			br.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -89,9 +91,35 @@ public class Server {
 					socketOut.println(output);
 					socketOut.println("DONE");
 				}
+				else if (input.equals("GET/TOOL/SEARCH")) {
+					String search = socketIn.readLine();
+					if(searchByID(search)) {
+						String output = theShop.getItem(Integer.parseInt(search));
+						socketOut.println(output);
+					}
+				}
+				else if (input.equals("TOOL/DECREASE")) {
+					String itemName = socketIn.readLine();
+					String output = theShop.decreaseItem(itemName);
+					socketOut.println(output);
+				}
+				else if (input.equals("GET/TOOL/ORDERS")) {
+					String output = theShop.printOrder();
+					socketOut.println(output);
+					socketOut.println("DONE");
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+	private boolean searchByID(String in) {
+		try { 
+			Integer.parseInt(in);
+			return true;
+		} catch(NumberFormatException e) {
+			return false;
 		}
 	}
 

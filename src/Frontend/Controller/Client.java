@@ -60,4 +60,30 @@ public class Client {
         }
         return list.toString();
     }
+
+    public String searchItem(String search) throws IOException {
+        socketOut.println("GET/TOOL/SEARCH");
+        socketOut.println(search);
+        String response = socketIn.readLine();
+        return response;
+    }
+
+	public String decreaseTool(String itemName) throws IOException {
+        socketOut.println("TOOL/DECREASE");
+        socketOut.println(itemName);
+        String response = socketIn.readLine();
+        return response;
+	}
+
+	public String displayOrders() throws IOException {
+        socketOut.println("GET/TOOL/ORDERS");
+        String response = socketIn.readLine();
+        StringBuilder orders = new StringBuilder();
+        while(!response.equals("DONE")) {
+            orders.append(response);
+            orders.append("\n");
+            response = socketIn.readLine();
+        }
+        return orders.toString();
+	}
 }
