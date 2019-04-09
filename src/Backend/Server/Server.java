@@ -85,7 +85,7 @@ public class Server {
 		while (true) {
 			try {
 				input = socketIn.readLine();
-				if (input.equals("GET/TOOLS")) {
+				if (input.equals("GET/TOOL/LIST")) {
 					String output = theShop.listAllItems();
 					socketOut.println(output);
 					socketOut.println("DONE");
@@ -97,19 +97,12 @@ public class Server {
 	}
 
 	public static void main(String[] args) {
-		try {
-			Server shopServer = new Server(9788);
-			ArrayList<Supplier> suppliers = new ArrayList<Supplier>();
-			suppliers = shopServer.readSuppliers(suppliers);
-			Inventory theInventory = new Inventory(shopServer.readItems(suppliers));
-			Shop theShop = new Shop(theInventory, suppliers);
-			ToolShopDB database = new ToolShopDB();
-			database.createDatabase();
-			shopServer.communicate(theShop);
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Server shopServer = new Server(9788);
+		ArrayList<Supplier> suppliers = new ArrayList<>();
+		suppliers = shopServer.readSuppliers(suppliers);
+		Inventory theInventory = new Inventory(shopServer.readItems(suppliers));
+		Shop theShop = new Shop(theInventory, suppliers);
+
+		shopServer.communicate(theShop);
 	}
 }
