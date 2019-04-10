@@ -131,12 +131,13 @@ public class Frame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String search = JOptionPane.showInputDialog("Enter the name or ID of the item you are looking for.");
+                if(search == null) {
+                    return;
+                }
                 String toolSearched = listener.actionPerformed("GET/TOOL/SEARCH-" + search); // Sends a string to the socket for the
                 // server to hear.
                 if (toolSearched.equals("") || toolSearched.equals("Error searching of tool")) {
                     System.err.println("Error searching for tool");
-                } else if(toolSearched.equals(null)) {
-                    JOptionPane.showMessageDialog(null, "Tool not found", "Item Not Found", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null, toolSearched, "Item found", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -154,6 +155,9 @@ public class Frame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String itemName = JOptionPane.showInputDialog("Enter the name of the item you wish to decrease the quantity of.");
+                if(itemName == null) {
+                    return;
+                }
                 String decrease = listener.actionPerformed("TOOL/DECREASE-" + itemName); // Sends a string to the socket for the
                 // server to hear.
                 if (decrease.equals("") || decrease.equals("Error decreasing item quantity")) {

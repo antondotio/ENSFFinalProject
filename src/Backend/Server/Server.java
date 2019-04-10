@@ -91,23 +91,33 @@ public class Server {
 					socketOut.println(output);
 					socketOut.println("DONE");
 				}
+				
 				else if (input.equals("GET/TOOL/SEARCH")) {
 					String search = socketIn.readLine();
+					String output;
 					if(searchByID(search)) {
-						String output = theShop.getItem(Integer.parseInt(search));
-						socketOut.println(output);
+						output = theShop.getItem(Integer.parseInt(search));
+					} else {
+						System.out.println(search);
+						output = theShop.getItem(search);
 					}
+					socketOut.println(output);
+					socketOut.println("DONE");
 				}
+
 				else if (input.equals("TOOL/DECREASE")) {
 					String itemName = socketIn.readLine();
 					String output = theShop.decreaseItem(itemName);
 					socketOut.println(output);
+					socketOut.println("DONE");
 				}
+
 				else if (input.equals("GET/TOOL/ORDERS")) {
 					String output = theShop.printOrder();
 					socketOut.println(output);
 					socketOut.println("DONE");
 				}
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -115,7 +125,7 @@ public class Server {
 	}
 
 	private boolean searchByID(String in) {
-		try { 
+		try {
 			Integer.parseInt(in);
 			return true;
 		} catch(NumberFormatException e) {
